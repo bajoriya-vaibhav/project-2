@@ -26,9 +26,6 @@ export const GithubProvider = ({children})=>{
       q: text
     })
     const response =await fetch(`${import.meta.env.VITE_GITHUB_URL}/search/users?${params}`,{
-      headers:{
-        authorization:`token ${token}`
-      }
     })
     const {items} = await response.json();
     dispatch({
@@ -55,9 +52,6 @@ export const GithubProvider = ({children})=>{
     //   per_page:6,
     // })
     const response =await fetch(`${import.meta.env.VITE_GITHUB_URL}/users/${login}/repos?q=sort=stars&order=desc&per_page=6`,{
-      headers:{
-        authorization:`token ${token}`
-      }
     }
     )
     const data = await response.json();

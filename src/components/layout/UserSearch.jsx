@@ -16,7 +16,7 @@ function UserSearch() {
     setText('')
   }
   const handleChange = (e)=>{
-    setText(e.target.value);''
+    setText(e.target.value);
   }
 
   return (

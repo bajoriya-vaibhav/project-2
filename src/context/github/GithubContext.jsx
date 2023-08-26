@@ -11,6 +11,7 @@ export const GithubProvider = ({children})=>{
   const initialState = {
     users:[],
     user:{},
+    repos:[],
     loading:false
   }
   const [state,dispatch] = useReducer(GithubReducer,initialState)
@@ -46,13 +47,32 @@ export const GithubProvider = ({children})=>{
       payload:data
     })
   }
+  const fetchrepos = async (login)=>{
+    setLoading();
+    const token = import.meta.env.VITE_GITHUB_TOKEN;
+    // const params = new URLSearchParams({
+    //   sort:'created',
+    //   per_page:6,
+    // })
+    const response =await fetch(`${import.meta.env.VITE_GITHUB_URL}/users/${login}/repos?q=sort=stars&order=desc&per_page=6`,{
+      headers:{
+        authorization:`token ${token}`
+      }
+    }
+    )
+    const data = await response.json();
+    dispatch({
+      type:'GET_REPOS',
+      payload:data
+    })
+  }
   const clearusers = () =>{
     dispatch({type:'CLEAR_USERS'})
   }
 
 
   return(
-    <GithubContext.Provider value={{users:state.users,user:state.user,loading:state.loading,searchusers,clearusers,fetchuser}}>{children}</GithubContext.Provider>
+    <GithubContext.Provider value={{users:state.users,user:state.user,repos:state.repos,loading:state.loading,searchusers,clearusers,fetchuser,fetchrepos}}>{children}</GithubContext.Provider>
   )
 }
 

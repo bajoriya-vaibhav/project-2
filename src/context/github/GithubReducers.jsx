@@ -20,5 +20,10 @@ export default function GithubReducer(state,action){
         ...state,users:[]
       }
       break
+    case 'GET_REPOS':
+      return{
+        ...state,repos:action.payload,loading:false
+      }
+      break
   }
 }

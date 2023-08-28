@@ -35,14 +35,13 @@ GitHub Rest API
 
 ##Project Structure
 
-/public: Contains static assets and the HTML template
-/src: Contains the application's source code
-/components: Reusable React components
-/containers: Higher-level components and container logic
-/styles: CSS, SCSS, or styled-components files
-/utils: Utility functions or helper modules
-App.js: The root component
-index.js: Entry point of the application
+* /public: Contains images and static assets
+* /src: Contains the application's source code
+* /components: Reusable React components
+* `/Components/**`:It includes the Navbar,Footer,Loading,Usersearch,Repos(card),User(user page),usercard(for all the users which matches the search). I have used the tailwindcss for styling, for mainting state usestate hook and usecontext hook for fetching the states and functions managed in GithubContext.
+* `/context/**`:It include all the main states and function mangaed using the createcontext to create a context object 
+* App.js: The root component
+* index.js: Entry point of the application
 
 ## Usage
 It helps user to fetch the github related details very easily. It's just for learning purpose not really much benefical and no future scope.
